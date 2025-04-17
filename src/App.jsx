@@ -1,11 +1,12 @@
-// import { useState, useEffect } from "react";
+
 import { Routes, Route } from "react-router-dom";
-import HomePages from "./pages/HomePage";
-import MoviesPage from "./pages/MoviesPage";
-import NotFoundPages from "./pages/NotFoundPage";
+import HomePages from "./pages/HomePage/HomePage";
+import MoviesPage from "./pages/MoviesPage/MoviesPage";
+import NotFoundPages from "./pages/NotFoundPage/NotFoundPage";
 import Navigation from "./components/Navigation/Navigation";
-// import Loader from "./components/Loader/Loader";
-// import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import MovieDetailsPage from "./pages/MovieDetailsPage/MovieDetailsPage"
+import MovieCast from "./components/MovieCast/MovieCast";
+import MovieReviews from "./components/MovieReviews/MovieReviews";
 
 function App() {
 
@@ -15,6 +16,10 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePages />} />
         <Route path="/movies" element={<MoviesPage />} />
+        <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
+        <Route path="cast" element={<MovieCast />} />
+        <Route path="reviews" element={<MovieReviews />} />
+        </Route>
         <Route path="*" element={<NotFoundPages />} />
       </Routes>
     </div>
