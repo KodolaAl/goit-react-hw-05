@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchReviews } from '../../services/api';
 import { useParams } from 'react-router-dom';
+import css from "./MovieReviews.module.css"
 
 const MovieReviews =()=> {
     const { movieId } = useParams();
@@ -10,9 +11,7 @@ useEffect(()=>{
     const fetchMovieReviews = async () => {
         try {
            const data = await fetchReviews(movieId)
-           console.log(data);
-           
-            setReviews(data)
+            setReviews(data);
         } catch(error) {
             console.log(error);
         };
@@ -23,10 +22,10 @@ useEffect(()=>{
     return (
         <div>
       {reviews.length > 0 ? (
-        <ul>
+        <ul className={css.list}>
           {reviews.map((review) => (
             <li key={review.id}>
-              <h3>{review.author}</h3>
+              <h3 className={css.author}>Author: {review.author}</h3>
               <p>{review.content}</p>
             </li>
           ))}

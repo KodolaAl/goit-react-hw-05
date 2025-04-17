@@ -2,12 +2,13 @@ import MovieList from "../../components/MovieList/MovieList";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import {searchMovie} from "../../services/api";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
-  const [query, setQuery] = useState("");
-
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") || "";
 
   useEffect(() => {
 
@@ -24,8 +25,13 @@ const MoviesPage = () => {
   }, [query]);
 
   const handleChangeQuery = (newQuery) => {
-    setQuery(newQuery);
-    setMovies([]);
+    if (!newQuery) {
+      searchParams.delete('query');
+      return setSearchParams(searchParams)
+
+    }
+    searchParams.set('query', newQuery)
+    setSearchParams(searchParams);
   };
 
   return (

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { fetchCast } from '../../services/api';
 import { useParams } from 'react-router-dom';
+import css from "./MovieCast.module.css";
 
 const MovieCast =()=>{
        const { movieId } = useParams();
@@ -10,9 +11,7 @@ const MovieCast =()=>{
     useEffect(()=>{
         const fetchMovieCast = async () => {
             try {
-               const data = await fetchCast(movieId)
-               console.log(data);
-               
+               const data = await fetchCast(movieId);
                 setCast(data)
             } catch(error) {
                 console.log(error);
@@ -22,8 +21,8 @@ const MovieCast =()=>{
     }, [movieId])
 
     return (
-        <ul>{cast.map((actor)=>{return(<li key={actor.id}>
-            <img src={urlImage+actor.profile_path
+        <ul className={css.list}>{cast.map((actor)=>{return(<li className={css.item} key={actor.id}>
+            <img className={css.img} src={urlImage+actor.profile_path
 } alt={actor.name} />
 <h3>{actor.name}</h3>
 <p>Character: {actor.character}</p>

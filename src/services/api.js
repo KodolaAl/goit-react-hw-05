@@ -23,22 +23,17 @@ export const searchMovie = async (query) => {
 
 export const fetchMovieById = async (movieId) => {
   const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`, options);
-  
   return response.data;
 };
 
 export const fetchReviews = async (movieId) => {
   const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews`, options);
-  console.log(response.data.results);
-  
   return response.data.results;
 };
 
 
 export const fetchCast = async (movieId) => {
   const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits`, options);
-  console.log(response.data.cast);
-  
   return response.data.cast;
 };
 

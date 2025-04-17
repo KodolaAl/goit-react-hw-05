@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
-const NotFoundPages = () => {
+const NotFoundPage = () => {
   return <div>
      <Link to={"/"}>
      <FaArrowLeft />
@@ -8,4 +8,4 @@ const NotFoundPages = () => {
                 </Link>
   </div>;
 };
-export default NotFoundPages;
+export default NotFoundPage;
